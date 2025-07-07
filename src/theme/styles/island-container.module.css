@@ -1,0 +1,72 @@
+/* Island Container Fixes */
+.islandContainer {
+  height: 700px;
+  min-height: 700px;
+  max-height: 700px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Ensure React root containers don't add extra height */
+#react-root,
+[data-react-component-rendered='true'],
+[data-island-id] {
+  height: 700px;
+  min-height: 700px;
+  max-height: 700px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  top: 0;
+  transition: none;
+  transform: none;
+}
+
+/* Fix for HubSpot island wrapper */
+.hs-island,
+.hs-island-wrapper,
+.island-container {
+  height: 700px;
+  min-height: 700px;
+  max-height: 700px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  transition: none;
+  transform: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .islandContainer {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+
+  #react-root,
+  [data-react-component-rendered='true'],
+  [data-island-id] {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+
+  .hs-island,
+  .hs-island-wrapper,
+  .island-container {
+    height: 600px;
+    min-height: 600px;
+    max-height: 600px;
+  }
+}

@@ -1,0 +1,18 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Advanced Calculator with Currency Conversion
+-->
+{% extends "./layouts/base.hubl.html" %} {% block body %} {% module "header"
+path="../components/modules/Header", brandColors="{{ theme.brand_color }}", %}
+{% module "hero" path="../components/modules/Hero", brandColors="{{
+theme.brand_color }}", %}
+
+<section id="calculator">
+  {% module "advancedCalculator"
+  path="../components/modules/AdvancedCalculator", brandColors="{{
+  theme.brand_color }}", %}
+</section>
+
+{% module "footer" path="../components/modules/Footer", brandColors="{{
+theme.brand_color }}", %} {% endblock body %}

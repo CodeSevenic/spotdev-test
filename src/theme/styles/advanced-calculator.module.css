@@ -1,0 +1,1084 @@
+/* Reset and base styles */
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.advCalcContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem;
+  gap: 2rem;
+  margin: 0 auto;
+  background: linear-gradient(
+    180deg,
+    var(--gradient-color-1, #544db4) 0%,
+    var(--gradient-color-1, #544db4) 50%,
+    var(--gradient-color-2, #dedcff) 50%,
+    var(--gradient-color-2, #dedcff) 100%
+  );
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header section */
+.advCalcHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.advCalcTitleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 600px;
+}
+
+.advCalcMainTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: #dedcff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.advCalcMainDescription {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.advCalcMainDescription p {
+  margin-top: 0;
+}
+
+.advCalcLastUpdated {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #ffffff;
+  opacity: 0.8;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+/* Main grid layout */
+.advCalcMainGrid {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Calculator card */
+.advCalcCalculatorCard {
+  background: #ffffff;
+  border-radius: 2.5rem;
+  box-shadow: 0 4px 54px rgba(84, 83, 83, 0.33);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  color: #000000;
+  height: fit-content;
+}
+
+.advCalcCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.advCalcCardTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.advCalcError {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Inputs container */
+.advCalcInputsContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2.5rem 2rem;
+  align-items: center;
+}
+
+.advCalcInputField {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.advCalcInputField:first-child {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.advCalcInputField:last-child {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.advCalcInputLabel {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.advCalcInputWrapper {
+  position: relative;
+}
+
+.advCalcInput {
+  width: 100%;
+  background: #f8fafd;
+  border: none;
+  border-radius: 6.875rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #545353;
+  outline: none;
+  box-shadow: 0 4px 14px inset rgba(222, 220, 255, 0.46);
+  transition: box-shadow 0.2s ease;
+}
+
+.advCalcInput:focus {
+  box-shadow: 0 4px 14px inset rgba(84, 77, 180, 0.3);
+}
+
+.advCalcInput::placeholder {
+  color: #545353;
+}
+
+/* Operation selector */
+.advCalcOperationSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 2;
+  grid-row: 1 / 3;
+}
+
+.advCalcOperationButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-bottom: -50px;
+}
+
+.advCalcOperationButtonsExpanded {
+  gap: 1rem;
+}
+
+.advCalcOperationBtn {
+  width: 4rem;
+  height: 4rem;
+  background: #ffffff;
+  border: 2px solid var(--primary-color, #544db4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(84, 77, 180, 0.34);
+  transition: all 0.3s ease;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+  position: relative;
+}
+
+.advCalcOperationBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 28px rgba(84, 77, 180, 0.4);
+}
+
+.advCalcOperationBtnActive {
+  background: var(--primary-color, #544db4);
+  color: #ffffff;
+  z-index: 10;
+}
+
+.advCalcOperationBtnExpanding {
+  animation: operationBtnSlideIn 0.3s ease forwards;
+  opacity: 0;
+  transform: scale(0.8) translateY(-20px);
+}
+
+@keyframes operationBtnSlideIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.advCalcOperationBtnActive .advCalcPlusVertical,
+.advCalcOperationBtnActive .advCalcPlusHorizontal {
+  background: #ffffff;
+}
+
+.advCalcOperationBtnActive .advCalcMinusHorizontal {
+  background: #ffffff;
+}
+
+.advCalcOperationBtnActive .advCalcMultiplyIcon,
+.advCalcOperationBtnActive .advCalcDivideIcon {
+  color: #ffffff;
+}
+
+.advCalcOperationBtnOutline {
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #544db4;
+  z-index: 10;
+}
+
+.advCalcOperationBtnOutline .advCalcPlusVertical,
+.advCalcOperationBtnOutline .advCalcPlusHorizontal,
+.advCalcOperationBtnOutline .advCalcMinusHorizontal {
+  background: #000000;
+}
+
+.advCalcOperationBtnOutline .advCalcMultiplyIcon,
+.advCalcOperationBtnOutline .advCalcDivideIcon {
+  color: #000000;
+}
+
+.advCalcPlusIcon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.advCalcPlusVertical,
+.advCalcPlusHorizontal {
+  position: absolute;
+  background: #000000;
+  border-radius: 1.25rem;
+}
+
+.advCalcPlusVertical {
+  width: 3px;
+  height: 2rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advCalcPlusHorizontal {
+  width: 2rem;
+  height: 3px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advCalcMinusIcon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}
+
+.advCalcMinusHorizontal {
+  position: absolute;
+  background: #000000;
+  border-radius: 1.25rem;
+  width: 2rem;
+  height: 3px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advCalcMultiplyIcon,
+.advCalcDivideIcon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Divider */
+.advCalcDivider {
+  width: 100%;
+  height: 2px;
+  background: #dedcff;
+  margin: 1rem 0;
+}
+
+/* Converter section */
+.advCalcConverterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.advCalcConverterHeader {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.advCalcConverterTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.advCalcToggleSwitch {
+  width: 5.5rem;
+  height: 3rem;
+  background: #dedcff;
+  border-radius: 3rem;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 4px 14px inset rgba(84, 77, 180, 0.1);
+  transition: all 0.3s ease;
+}
+
+.advCalcToggleSlider {
+  position: absolute;
+  left: 0.375rem;
+  top: 0.375rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: #545353;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.advCalcToggleSwitchActive .advCalcToggleSlider {
+  transform: translateX(2.5rem);
+  background: #ffffff;
+}
+
+.advCalcToggleSwitchActive {
+  background: #544db4;
+}
+
+/* Currency selector */
+.advCalcCurrencySection {
+  margin-top: 1rem;
+}
+
+.advCalcCurrencySelectors {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.advCalcCurrencySelect {
+  padding: 0.75rem 1rem;
+  border: 2px solid #dedcff;
+  border-radius: 1rem;
+  background: #f8fafd;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #545353;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.advCalcCurrencySelect:focus {
+  border-color: #544db4;
+}
+
+.advCalcCurrencyArrow {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #544db4;
+}
+
+/* Action buttons */
+.advCalcActionButtons {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.advCalcBtnPrimary {
+  background: var(--primary-color, #544db4);
+  color: #ffffff;
+  border: none;
+  border-radius: 3rem;
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.075em;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba(84, 77, 180, 0.34);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.advCalcBtnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(84, 77, 180, 0.4);
+}
+
+.advCalcBtnPrimary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.advCalcBtnSecondary {
+  background: transparent;
+  color: #8f8f8f;
+  border: 2px solid #8f8f8f;
+  border-radius: 3rem;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.advCalcBtnSecondary:hover {
+  border-color: var(--primary-color, #544db4);
+  color: var(--primary-color, #544db4);
+}
+
+/* Right section */
+.advCalcRightSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Calculation display */
+.advCalcCalculationDisplay {
+  background: #0b0833;
+  border-radius: 2.5rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #ffffff;
+}
+
+.advCalcCalcOperation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.advCalcCalcNumber {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #45bcae;
+  line-height: 1;
+}
+
+.advCalcPlusSmall {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+}
+
+.advCalcPlusVerticalSmall,
+.advCalcPlusHorizontalSmall {
+  position: absolute;
+  background: #45bcae;
+  border-radius: 1.25rem;
+}
+
+.advCalcPlusVerticalSmall {
+  width: 2px;
+  height: 1rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advCalcPlusHorizontalSmall {
+  width: 1rem;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advCalcMinusSmall {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+}
+
+.advCalcMinusHorizontalSmall {
+  position: absolute;
+  background: #45bcae;
+  border-radius: 1.25rem;
+  width: 1rem;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.advCalcMultiplySmall,
+.advCalcDivideSmall {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #45bcae;
+}
+
+.advCalcCalcResult {
+  display: flex;
+  align-items: end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.advCalcResultLeft,
+.advCalcResultRight {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+}
+
+.advCalcResultNumber {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #45bcae;
+  line-height: 1;
+}
+
+.advCalcResultNumberLarge {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.advCalcCurrencyTag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.advCalcCurrencyFlag {
+  width: 1.25rem;
+  height: 0.875rem;
+  background: #545353;
+  border-radius: 0.125rem;
+}
+
+.advCalcCurrencyCode {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* History section */
+.advCalcHistorySection {
+  background: #f8f8f8;
+  border-radius: 2rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #000000;
+}
+
+.advCalcHistoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.advCalcHistoryTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--primary-color, #544db4);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.advCalcClearHistoryBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease;
+  padding: 5px 12px;
+  border-radius: 0.5rem;
+  color: var(--primary-color, #544db4);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: #dedcff;
+  width: fit-content;
+}
+
+.advCalcClearHistoryBtn:hover {
+  background: rgba(84, 77, 180, 0.1);
+}
+
+.advCalcClearHistoryBtn svg {
+  width: 30px;
+  height: 30px;
+}
+
+.advCalcHistoryMessage {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #545353;
+  line-height: 1.4;
+  max-width: 18rem;
+  margin: 0;
+}
+
+.advCalcHistoryContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.advCalcHistoryList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.advCalcHistoryItem {
+  background: #ffffff;
+  border-radius: 32px 8px 32px 32px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.advCalcHistoryItemContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.advCalcHistoryCalculation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.advCalcHistoryFormula {
+  font-size: 16px;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1.2;
+}
+
+.advCalcHistoryResult {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.advCalcHistoryConversionDisplay {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.advCalcHistoryConversionFrom,
+.advCalcHistoryConversionTo {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.advCalcHistoryConversionArrow {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.advCalcHistoryCurrencyTag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.advCalcHistoryCurrencyFlag {
+  width: 1rem;
+  height: 0.75rem;
+  background: #374151;
+  border-radius: 0.125rem;
+}
+
+.advCalcHistoryCurrencyCode {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.advCalcHistoryItemActions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+  justify-content: end;
+}
+
+.advCalcHistoryDeleteBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.advCalcHistoryDeleteBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.advCalcHistoryCopyBtn {
+  background: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 8px 12px;
+  border-radius: 0.375rem;
+  color: #45bcae;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.advCalcHistoryCopyBtn:hover {
+  background: rgba(70, 188, 174, 0.1);
+}
+
+/* Responsive design */
+/* Tablet Layout - maintain side-by-side but more compact */
+@media (max-width: 1024px) {
+  .advCalcContainer {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .advCalcMainGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .advCalcCalculatorCard {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .advCalcCalculationDisplay {
+    padding: 2rem;
+  }
+
+  .advCalcCalcNumber {
+    font-size: 1.25rem;
+  }
+
+  .advCalcResultNumber {
+    font-size: 1.25rem;
+  }
+
+  .advCalcResultNumberLarge {
+    font-size: 2rem;
+  }
+
+  .advCalcHistorySection {
+    padding: 2rem;
+  }
+}
+
+/* Mobile Layout - single column, everything stacked */
+@media (max-width: 768px) {
+  .advCalcContainer {
+    padding: 4rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .advCalcMainGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .advCalcCalculatorCard {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .advCalcInputsContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 1.5rem;
+  }
+
+  .advCalcOperationSelector {
+    justify-self: end;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .advCalcOperationButtons {
+    flex-direction: row;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .advCalcOperationButtonsExpanded {
+    gap: 0.5rem;
+  }
+
+  .advCalcOperationBtn {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .advCalcOperationBtnExpanding {
+    animation: operationBtnSlideInMobile 0.3s ease forwards;
+  }
+
+  @keyframes operationBtnSlideInMobile {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) translateX(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateX(0);
+    }
+  }
+
+  .advCalcInputField:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .advCalcInputField:last-child {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .advCalcCalculationDisplay {
+    padding: 1.5rem;
+  }
+
+  .advCalcCalcNumber {
+    font-size: 1rem;
+  }
+
+  .advCalcResultNumber {
+    font-size: 1.125rem;
+  }
+
+  .advCalcResultNumberLarge {
+    font-size: 1.75rem;
+  }
+
+  .advCalcHistorySection {
+    padding: 1.5rem;
+  }
+
+  .advCalcLastUpdated {
+    font-size: 14px;
+    margin-bottom: 0.75rem;
+  }
+
+  .advCalcActionButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .advCalcBtnPrimary,
+  .advCalcBtnSecondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .advCalcCalcResult {
+    flex-direction: row;
+    align-items: end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .advCalcConverterHeader {
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .advCalcHistoryItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .advCalcHistoryItemActions {
+    width: 100%;
+  }
+
+  .advCalcHistoryConversionDisplay {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .advCalcHistoryHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .advCalcClearHistoryBtn {
+    align-self: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .advCalcMainTitle {
+    font-size: 1.75rem;
+  }
+
+  .advCalcMainDescription {
+    font-size: 1rem;
+  }
+
+  .advCalcCardTitle {
+    font-size: 1.5rem;
+  }
+
+  .advCalcConverterTitle {
+    font-size: 1.5rem;
+  }
+
+  .advCalcHistoryTitle {
+    font-size: 1.5rem;
+  }
+
+  .advCalcCalcNumber {
+    font-size: 0.875rem;
+  }
+
+  .advCalcResultNumber {
+    font-size: 1rem;
+  }
+
+  .advCalcResultNumberLarge {
+    font-size: 1.5rem;
+  }
+
+  .advCalcLastUpdated {
+    font-size: 14px;
+    margin-bottom: 0.5rem;
+    justify-content: start;
+  }
+
+  .advCalcOperationBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+
+  .advCalcOperationButtons {
+    gap: 0.25rem;
+  }
+
+  .advCalcOperationButtonsExpanded {
+    gap: 0.25rem;
+  }
+
+  .advCalcPlusIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .advCalcPlusVertical {
+    width: 2px;
+    height: 1.5rem;
+  }
+
+  .advCalcPlusHorizontal {
+    width: 1.5rem;
+    height: 2px;
+  }
+
+  .advCalcMinusIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .advCalcMinusHorizontal {
+    width: 1.5rem;
+    height: 2px;
+  }
+
+  .advCalcHistoryDeleteBtn,
+  .advCalcHistoryCopyBtn {
+    font-size: 0.625rem;
+    padding: 0.375rem;
+  }
+
+  .advCalcHistoryDeleteBtn svg,
+  .advCalcHistoryCopyBtn svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+
+  .advCalcHistoryItemActions {
+    gap: 0.25rem;
+  }
+}
