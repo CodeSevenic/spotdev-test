@@ -268,8 +268,9 @@ export default function AdvancedCalculatorIsland(
     >
       <div
         style={{
-          maxWidth: '1440px',
+          maxWidth: '1200px',
           margin: '0 auto',
+          width: '100%',
         }}
       >
         {/* Header section */}
